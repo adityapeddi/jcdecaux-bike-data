@@ -6,10 +6,10 @@ import os
 import time
 
 # Get API key from environment variable
-API_KEY = os.environ.get('26683874f80593e0924102f73c6529a208fd8f56')
+#API_KEY = os.environ.get('26683874f80593e0924102f73c6529a208fd8f56')
 
 # JCDecaux API endpoint for station information
-API_URL = "https://api.jcdecaux.com/vls/v1/stations"
+#API_URL = "https://api.jcdecaux.com/vls/v1/stations"
 
 def fetch_data():
     """Fetch current bike station data from JCDecaux API"""
