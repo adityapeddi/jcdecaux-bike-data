@@ -13,13 +13,17 @@ API_URL = "https://api.jcdecaux.com/vls/v1/stations"
 
 def fetch_data():
     """Fetch current bike station data from JCDecaux API"""
-    params = {
-        'apiKey': API_KEY,
-        'contract': 'Dublin'  # Replace with your city (e.g., 'paris', 'lyon', etc.)
-    }
-    
-    response = requests.get(API_URL, params=params)
-    
+    #params = {
+     #   'apiKey': API_KEY,
+      #  'contract': 'Dublin'  # Replace with your city (e.g., 'paris', 'lyon', etc.)
+    #}
+    NAME = "Dublin"
+    STATIONS = "https://api.jcdecaux.com/vls/v1/stations"
+    APIKEY = "26683874f80593e0924102f73c6529a208fd8f56"
+
+    response = requests.get("https://api.jcdecaux.com/vls/v1/stations?contract=" + NAME + "&apiKey=" + APIKEY)
+    #response = requests.get("https://api.jcdecaux.com/vls/v1/stations?contract={'dublin'}&apiKey={26683874f80593e0924102f73c6529a208fd8f56}")
+
     if response.status_code == 200:
         return response.json()
     else:
@@ -36,7 +40,7 @@ def save_data(data):
     
     # Convert to DataFrame
     df = pd.json_normalize(data)
-    
+    print(df)
     # Save raw JSON as backup
     with open(f"data/raw/stations_{timestamp}.json", "w") as f:
         json.dump(data, f)
